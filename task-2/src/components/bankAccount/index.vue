@@ -1,6 +1,9 @@
 <template>
   <div>
-    <div class="count" :class="countStyle">Сума на рахунку <span>{{count}}</span></div>
+    <div class="count">
+        Сума на рахунку 
+        <span :style="{color:countStyle}">{{count}}</span>
+    </div>
     <div class="add">
         Зарахувати на рахунок
         <input type="number" v-model="add" >
@@ -13,8 +16,13 @@
     </div>
     <div class="commission">Відсотки за комісію: {{commission}}</div>
     <hr>
-    <div class="USD">Сума у доларах: {{getUSD}}</div>
-    <div class="EUR">Сума у Євро: {{getEUR}}</div>
+    <div class="USD">Сума у доларах: 
+        <span :style="{color:UsdStyle}">{{getUSD()}}</span>
+    </div>
+    <div class="EUR">
+        Сума у Євро: 
+        <span :style="{color:EurStyle}">{{getEUR()}}</span>
+    </div>
   </div>
 </template>
 
@@ -39,48 +47,51 @@ export default {
             default: 3
         },
 
-        countStyle: {
-            type: String,
-            default: null
-        },
-
     },
 
     data() {    
         return {
+            Usd: 0,
+            Eur: 0,
             count: 0 ,
             add: 0 ,
             withdraw: 0 ,
             commission: 0,
+            countStyle: null,
+            UsdStyle: null,
+            EurStyle: null,
         }
-    },
-
-    computed: {
-        getUSD() {
-            return Math.floor( +(this.count / this.USD).toFixed(2) )
-        },
-
-        getEUR() {
-            return Math.floor( +(this.count / this.EUR).toFixed(2) )
-        },
-
     },
     
     methods: {
-        
-
         getMoney(value) {
-            if (value < 0) value = 0; 
-            this.commission = Math.floor(+value * this.commissionPercent / 100);
-            this.count = Math.floor(this.count + +value - this.commission);
+            if (value < 0) value = 0
+            this.commission = Math.floor(+value * this.commissionPercent / 100)
+            this.count = Math.floor(this.count + +value - this.commission)
+            this.countStyle = "green"
         },
 
         withdrawMoney(value) {
-            if (value < 0) value = 0;
-            if ( value > this.count ) value = this.count;
-            this.commission = Math.floor(+value * this.commissionPercent / 100);
-            this.count = Math.floor(this.count - +value);
-        }        
+            if (value < 0) value = 0
+            if ( value > this.count ) value = this.count
+            this.commission = Math.floor(+value * this.commissionPercent / 100)
+            this.count = Math.floor(this.count - +value)
+            this.countStyle = "red"
+        },
+        
+        getUSD() {
+            this.Usd =  Math.floor( +(this.count / this.USD).toFixed(2) );
+            if(this.Usd < 100) this.UsdStyle="red"
+            else this.UsdStyle="green"
+            return this.Usd
+        },
+
+        getEUR() {
+            this.Eur = Math.floor( +(this.count / this.EUR).toFixed(2) );
+            if(this.Eur < 100) this.EurStyle="red"
+            else this.EurStyle="green"
+            return this.Eur
+        },
     },
 }
 </script>
