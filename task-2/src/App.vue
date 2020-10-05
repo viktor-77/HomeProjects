@@ -1,13 +1,14 @@
 <template>
   <div id="app">
     <bankAccount
-      Usd
-      Eur
-      commissionPercent
+      :Usd="28"
+      :Eur="32"
+      :commissionPercent="3"
     />
     <hr><hr><hr>
     <login-password
-      
+      :logins="logins"
+      :passwords="passwords"
     />
   </div>
 </template>
@@ -26,7 +27,8 @@ export default {
 
   data() {
     return {
-      array:[]
+      logins:['Viktor','Sasha','Oleg','Dima','Slavik'],
+      passwords:['123456789','987654321','5874628','2515218','528252515151']
     }
   },
 
