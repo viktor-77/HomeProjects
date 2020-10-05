@@ -80,14 +80,14 @@ export default {
         },
         
         getUSD() {
-            this.Usd =  Math.floor( +(this.count / this.USD).toFixed(2) );
+            this.Usd = (this.count / this.USD).toFixed(2)
             if(this.Usd < 100) this.UsdStyle="red"
             else this.UsdStyle="green"
             return this.Usd
         },
 
         getEUR() {
-            this.Eur = Math.floor( +(this.count / this.EUR).toFixed(2) );
+            this.Eur =  (this.count / this.EUR).toFixed(2)
             if(this.Eur < 100) this.EurStyle="red"
             else this.EurStyle="green"
             return this.Eur
