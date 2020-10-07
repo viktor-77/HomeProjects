@@ -66,16 +66,16 @@ export default {
     methods: {
         getMoney(value) {
             if (value < 0) value = 0
-            this.commission = Math.floor(+value * this.commissionPercent / 100)
-            this.count = Math.floor(this.count + +value - this.commission)
+            this.commission = (value * this.commissionPercent / 100).toFixed(2)
+            this.count = (this.count + +value - this.commission).toFixed(2)
             this.countStyle = "green"
         },
 
         withdrawMoney(value) {
             if (value < 0) value = 0
             if ( value > this.count ) value = this.count
-            this.commission = Math.floor(+value * this.commissionPercent / 100)
-            this.count = Math.floor(this.count - +value)
+            this.commission = (value * this.commissionPercent / 100).toFixed(2)
+            this.count = (this.count - value).toFixed(2)
             this.countStyle = "red"
         },
         
