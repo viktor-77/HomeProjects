@@ -19,8 +19,16 @@
         <div class="year">
             <div class="title">Year</div>
             <select v-model="year">
-                <option v-for="item in yearArray" :key="item.year">
+                <option v-for="item in yearArray" :key="item.year" :disabled="item.isDisabled">
                     {{item.year}}
+                </option>
+            </select>
+        </div>
+        <div class="color">
+            <div class="title">Color</div>
+            <select v-model="color">
+                <option v-for="item in colorArray" :key="item.color" :disabled="item.isDisabled">
+                    {{item.color}}
                 </option>
             </select>
         </div>
@@ -41,6 +49,11 @@
                 type: Array,
                 default: null
             },
+
+            colorArray: {
+                type: Array,
+                default: null
+            },
                
         },
 
@@ -49,7 +62,8 @@
                 minPrice: null,
                 maxPrice: null,
                 category: this.categoryArray[0],
-                year: this.yearArray[0].year
+                year: this.yearArray[0].year,
+                color: this.colorArray[0].color,
             }
         },
 
@@ -80,6 +94,14 @@
                 this.$emit('filter-change',{
                     year : val 
                 })
+            },
+
+            color(val){
+                if (val == "Усі кольори") val = null
+
+                this.$emit('filter-change',{
+                    color : val 
+                })
             }
         },
 
@@ -107,7 +129,7 @@
         }
     }
 
-    .category,.year {
+    .category,.year,.color {
         display: flex;
         flex-direction: column;
 

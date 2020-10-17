@@ -5,6 +5,7 @@ export default [
         title: "Apple iPhone 11 128GB Black",
         category: "phone",
         year: 2019,
+        color: 'Red',
     },
     
     {
@@ -13,6 +14,7 @@ export default [
         title: "Apple iPhone 11 Pro Max 256GB Midnight Green",
         category: "phone",
         year: '2019',
+        color: 'Midnight Green',
     },
 
     {
@@ -21,6 +23,7 @@ export default [
         title: "iPhone SE 64GB Black ",
         category: "phone",
         year: 2017,
+        color:'Black'
     },
 
     {
@@ -29,6 +32,7 @@ export default [
         title: "Apple iPhone 11 64GB Purple",
         category: "phone",
         year: 2019,
+        color:'Purple'
     },
 
     {
@@ -37,14 +41,16 @@ export default [
         title: "Samsung Galaxy A50 4/64 Black",
         category: "phone",
         year: 2020,
+        color: 'Black'
     },
 
     {
         imgSrc: "https://i.allo.ua/media/catalog/product/cache/3/image/425x295/602f0fa2c1f0d1ba5e241f914e856ff9/f/i/file_1496.jpg",
         price: "9999",
-        title: "Samsung Galaxy A71 6/128GB Black",
+        title: "Samsung Galaxy A71 6/128GB ",
         category: "phone",
         year: '2020',
+        color:'Black'
     },
 
     {
@@ -53,14 +59,16 @@ export default [
         title: "Mi RedmiBook 14 II R5/8/512/W",
         category: "laptop",
         year: '2018',
+        color: 'Grey'
     },
 
     {
         imgSrc: "https://i.allo.ua/media/catalog/product/cache/3/image/425x295/602f0fa2c1f0d1ba5e241f914e856ff9/w/w/wwru_macbook-air_spacegray_q220_pdp-image-1_1.jpg",
         price: "1002354",
-        title: "Apple Macbook Air Retina 2020 (MWTJ2) Space Grey",
+        title: "Apple Macbook Air Retina 2020 (MWTJ2) ",
         category: "laptop",
         year: '2020',
+        color: 'Space Grey'
     },
 
 ]
