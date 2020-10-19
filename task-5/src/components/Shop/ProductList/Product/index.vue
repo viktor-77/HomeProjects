@@ -1,5 +1,6 @@
 <template>
     <div>
+        <div class="cart-button" @click="$emit('to-cart')"></div>
         <img :src="imgSrc" alt="">
         <div class="price">
             {{processedPrice}} грн
@@ -52,6 +53,13 @@
 </script>
 
 <style lang="css" scoped>
+    .cart-button {
+        width: 12px;
+        height: 12px;
+        background-color: red;
+        margin-left: auto;
+    }
+    
     img {
         width: 250px;
     }

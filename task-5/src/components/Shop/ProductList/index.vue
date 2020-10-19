@@ -1,6 +1,7 @@
 <template>
     <div class="ProductList">
         <product v-for="(item,index) in products" :key="index"
+            @to-cart="toCart(item.title)"
             :imgSrc = "item.imgSrc"
             :price = "item.price"
             :title = "item.title"
@@ -25,6 +26,11 @@
             },
         },
 
+        methods: {
+            toCart(item) {
+                this.$emit("to-cart",item)
+            }
+        },
 
     }
 </script>

@@ -2,7 +2,9 @@
     <div class="Shop">
         <header-shop class="HeaderShop"
             title="My Shop"
+            :amountCart="cart.length"
             @filter-title="setFilterTitle"
+            @clear-cart="clearCart"
         />
         <filter-tab class="FilterTab"
             @filter-change="setFilterData"
@@ -12,6 +14,7 @@
         />
         <product-list class="ProductList"
             :products="filteredProducts"
+            @to-cart="toCart"
         />
     </div>
 </template>
@@ -46,7 +49,9 @@
                     category: null,
                     year: null,
                     color: null,
-                }
+                },
+
+                cart: []
             }
         },
 
@@ -139,7 +144,8 @@
                     (this.filter.category === null || item.category === this.filter.category)  &&
                     (this.filter.year === null || item.year == this.filter.year) 
                 )          
-            },                
+            },     
+
         },
         
         methods: {
@@ -155,6 +161,14 @@
                     ...this.filter,         
                     ...val
                 }
+            },
+
+            toCart(item) {
+                this.cart.push(item)
+            },
+
+            clearCart() {
+                this.cart.splice(0, this.cart.length)
             },
         },
 

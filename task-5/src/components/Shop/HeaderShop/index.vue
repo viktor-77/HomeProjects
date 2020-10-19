@@ -2,6 +2,10 @@
     <div class="HeaderShop">
         <div class="title">{{title}}</div>
         <input type="text" v-model="filter" placeholder="Input title">
+        <div class="cart">
+            <div class="cart-amount">Кількість елементів у корзині: {{amountCart}}</div>
+            <button @click="$emit('clear-cart')">Очистити корзину</button>
+        </div>
     </div>
 </template>
 
@@ -13,6 +17,11 @@
             title: {
                 type: String,
                 default: "title"
+            },
+
+            amountCart: {
+                type: [String, Number],
+                default: 0
             },
         },
 

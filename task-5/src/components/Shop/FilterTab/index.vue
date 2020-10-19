@@ -54,6 +54,7 @@
                 type: Array,
                 default: null
             },
+
                
         },
 
@@ -82,7 +83,9 @@
 
             category(val) {
                 if(val=="Усі категорії") val = null
-
+                this.color = "Усі кольори",
+                this.year = "Усі роки"
+                
                 this.$emit('filter-change',{
                     category: val 
                 }) 
