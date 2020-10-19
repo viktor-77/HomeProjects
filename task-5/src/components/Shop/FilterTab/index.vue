@@ -85,6 +85,8 @@
                 if(val=="Усі категорії") val = null
                 this.color = "Усі кольори",
                 this.year = "Усі роки"
+                this.minPrice = null
+                this.maxPrice = null
                 
                 this.$emit('filter-change',{
                     category: val 

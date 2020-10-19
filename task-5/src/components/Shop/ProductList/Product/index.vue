@@ -1,6 +1,8 @@
 <template>
     <div>
-        <div class="cart-button" @click="$emit('to-cart')"></div>
+        <div class="AddToCart">
+            Додати до корзини<div class="cart-button" @click="$emit('to-cart')"></div>
+        </div>
         <img :src="imgSrc" alt="">
         <div class="price">
             {{processedPrice}} грн
@@ -53,11 +55,21 @@
 </script>
 
 <style lang="css" scoped>
+    .AddToCart {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
     .cart-button {
         width: 12px;
         height: 12px;
         background-color: red;
-        margin-left: auto;
+        margin-left: 6px;
+    }
+
+    .cart-button:hover {
+        transform: scale(1.2) ;
     }
     
     img {
