@@ -2,9 +2,7 @@
     <div class="Shop">
         <header-shop class="HeaderShop"
             title="My Shop"
-            :amountCart="cart.length"
             @filter-title="setFilterTitle"
-            @clear-cart="clearCart"
         />
         <filter-tab class="FilterTab"
             @filter-change="setFilterData"
@@ -14,7 +12,6 @@
         />
         <product-list class="ProductList"
             :products="filteredProducts"
-            @to-cart="toCart"
         />
     </div>
 </template>
@@ -23,6 +20,8 @@
     import HeaderShop from "./HeaderShop";
     import FilterTab from "./FilterTab";
     import ProductList from "./ProductList";
+    import products from "@/products";
+    
 
     export default {
         name: "Shop",
@@ -33,15 +32,9 @@
             FilterTab,
         },
 
-        props: {
-            products: {
-                type: Array,
-                default: null
-            },
-        },
-
         data() {
             return {
+                products,
                 filter:{
                     title: null,
                     minPrice: null,
@@ -50,32 +43,30 @@
                     year: null,
                     color: null,
                 },
-
-                cart: []
             }
         },
 
         computed: {  
             categoryArray() {
-                let arr = []
+                let categories = []
                 this.products.forEach(item =>{
-                    if(!arr.includes(item.category)) arr.push(item.category)
+                    if(!categories.includes(item.category)) categories.push(item.category)
                 })
-                arr.sort()
-                arr.unshift("Усі категорії")
-                return arr
+                categories.sort()
+                categories.unshift("Усі категорії")
+                return categories
             },
 
             yearArray(){
-                let allYears = []
+                let years = []
                 let processedYears = [{year:"Усі роки",isDisabled:false}]
  
                 this.products.forEach(item => {
-                    if(!allYears.includes(+item.year)) allYears.push(+item.year) 
+                    if(!years.includes(+item.year)) years.push(+item.year) 
                 })
-                allYears.sort((a,b)=> b-a)
+                years.sort((a,b)=> b-a)
                 
-                allYears.forEach(item=>{
+                years.forEach(item=>{
                     let find = this.filteredYears.find(filteredItem => filteredItem.year == item)
                     if(find) processedYears.push({year:item,isDisabled:false})
                     else processedYears.push({year:item,isDisabled:true})
@@ -161,14 +152,6 @@
                     ...this.filter,         
                     ...val
                 }
-            },
-
-            toCart(item) {
-                this.cart.push(item)
-            },
-
-            clearCart() {
-                this.cart.splice(0, this.cart.length)
             },
         },
 

@@ -1,26 +1,17 @@
 <template>
   <div id="app">
-    <shop
-      :products="products"
-    />
+    <shop/>
   </div>
 </template>
 
 <script>
 import Shop from "./components/Shop";
-import products from "./products";
 
 export default {
   name: 'App',
 
   components: {
     Shop,
-  },
-
-  data() {
-    return {
-      products,
-    }
   },
 }
 </script>

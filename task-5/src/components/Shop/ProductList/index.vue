@@ -1,22 +1,23 @@
 <template>
     <div class="ProductList">
         <product v-for="(item,index) in products" :key="index"
-            @to-cart="toCart(item.title)"
             :imgSrc = "item.imgSrc"
             :price = "item.price"
             :title = "item.title"
+            @to-cart="toCart(item)"
         />
     </div>
 </template>
 
 <script>
-    import Product from "./Product";
+    import product from "./Product";
+    import { mapActions } from 'vuex'
 
     export default {
         name: "ProductList",
 
         components: {
-            Product,
+            product,
         },
 
         props: {
@@ -27,8 +28,10 @@
         },
 
         methods: {
+            ...mapActions(['addToCart']),
+
             toCart(item) {
-                this.$emit("to-cart",item)
+                this.addToCart(item)
             }
         },
 

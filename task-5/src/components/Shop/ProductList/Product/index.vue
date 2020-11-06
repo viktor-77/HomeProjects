@@ -1,9 +1,9 @@
 <template>
-    <div>
-        <div class="AddToCart">
-            Додати до корзини<div class="cart-button" @click="$emit('to-cart')"></div>
+    <div class="container">
+        <div class="addToCart" @click="toCart">
+            <img src="https://img.icons8.com/material-outlined/64/000000/shopping-cart.png" class="cartIcon"/>
         </div>
-        <img :src="imgSrc" alt="">
+        <img :src="imgSrc" alt="" class="productImage">
         <div class="price">
             {{processedPrice}} грн
         </div>
@@ -51,28 +51,36 @@
             }
         },
 
+        methods: {
+            toCart() {
+                this.$emit('to-cart')
+            }
+        },
+
     }
 </script>
 
-<style lang="css" scoped>
-    .AddToCart {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+<style lang="css" scoped> 
+    .container {
+        line-height: 1.4;
     }
 
-    .cart-button {
-        width: 12px;
-        height: 12px;
-        background-color: red;
-        margin-left: 6px;
-    }
-
-    .cart-button:hover {
-        transform: scale(1.2) ;
-    }
-    
-    img {
+    .productImage {
         width: 250px;
     }
+
+    .addToCart {
+        width: 60%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: row-reverse;
+        margin-bottom: 8px;
+    }
+
+    .cartIcon {
+        height: 25px;
+        width: 25px;
+        cursor: pointer;
+    }
+
 </style>
