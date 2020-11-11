@@ -3,14 +3,15 @@
         <div class="title">{{title}}</div>
         <input type="text" v-model="filter" placeholder="Input title">
         <div class="cart">
-            <div class="cart-amount">Кількість елементів у корзині: {{getCart.length}}</div>
-            <button @click="clearCart">Очистити корзину</button>
+            <button><router-link to="/Cart">Cart</router-link></button>
+            <button><router-link to="/">Close Cart</router-link></button>
         </div>
+        <router-view></router-view>
+        
     </div>
 </template>
 
 <script>
-    import { mapGetters, mapActions } from 'vuex'
 
     export default {
         name: "HeaderShop",
@@ -32,14 +33,6 @@
             filter(val) {
                 this.$emit("filter-title",val)
             }
-        },
-
-        computed: {
-            ...mapGetters(['getCart'])
-        },
-
-        methods: {
-            ...mapActions(['clearCart'])
         },
 
     }

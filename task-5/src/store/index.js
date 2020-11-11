@@ -39,7 +39,7 @@ const store = new Vuex.Store({
     }
   },
   getters: {
-    getCart: (state) => state.cart
+    getCart: (state) => state.cart,
   }
 })
 

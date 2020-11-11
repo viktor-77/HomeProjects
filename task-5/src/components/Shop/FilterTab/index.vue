@@ -3,6 +3,10 @@
         <div class="price">
             <div class="title">Price</div>
             <div class="input-price">
+                <b-field>
+                    <b-slider v-model="price" :min="1" :max="15" :step="0.5" ticks>
+                    </b-slider>
+                </b-field>
                 <input type="number" v-model="minPrice" placeholder="min">
                 -
                 <input type="number" v-model="maxPrice" placeholder="max">
@@ -65,6 +69,7 @@
                 category: this.categoryArray[0],
                 year: this.yearArray[0].year,
                 color: this.colorArray[0].color,
+                price: [2, 5],
             }
         },
 

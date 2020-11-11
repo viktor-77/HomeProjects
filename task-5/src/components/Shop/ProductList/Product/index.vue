@@ -82,5 +82,9 @@
         width: 25px;
         cursor: pointer;
     }
-
+    
+    .title {
+        font-weight: normal;
+        font-size: 20px;
+    }
 </style>
